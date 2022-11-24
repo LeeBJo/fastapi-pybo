@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, Text, DateTime, ForeignKey, Table
+from sqlalchemy import Column, Integer, String, Text, DateTime, ForeignKey, Table, Boolean
 from sqlalchemy.orm import relationship
 
 from testdb import Base
@@ -45,6 +45,7 @@ class User(Base):
     username = Column(String, unique=True, nullable=False)
     password = Column(String, nullable=False)
     email = Column(String, unique=True, nullable=False)     # unique : 같은 값을 저장할 수 없다\
+    alarmAccepted = Column(Boolean, default=False)
 
 
 # DB 테이블 추가 시

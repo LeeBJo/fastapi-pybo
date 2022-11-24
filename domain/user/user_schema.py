@@ -6,6 +6,7 @@ class UserCreate(BaseModel):
     password1: str
     password2: str
     email: EmailStr
+    alarmAccepted: bool
 
     @validator('username', 'password1', 'password2', 'email')
     def not_empty(cls, v):
