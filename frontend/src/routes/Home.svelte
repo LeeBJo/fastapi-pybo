@@ -25,7 +25,7 @@
         })
     }
 
-    $:$page, $keyword, get_question_list()      //page 값이 변경될 경우 get_question_list 함수도 다시 호출
+    $:$page, $keyword, get_question_list()      //$page 또는 $keyword의 값이 변경되면 자동으로 get_question_list() 함수가 실행
 </script>
 <!--질문 목록 데이터가 "question_list"라는 이름으로 전달-->
 
@@ -74,19 +74,19 @@
     <ul class="pagination justify-content-center">
         <!-- 이전페이지 -->
         <li class="page-item {$page <= 0 && 'disabled'}">
-            <button class="page-link" on:click="{() => get_question_list($page-1)}">이전</button>
+            <button class="page-link" on:click="{() => $page--}">이전</button>
         </li>
         <!-- 페이지번호 -->
         {#each Array(total_page) as _, loop_page}
         {#if loop_page >= $page-5 && loop_page <= $page+5} 
         <li class="page-item {loop_page === $page && 'active'}">
-            <button on:click="{() => get_question_list(loop_page)}" class="page-link">{loop_page+1}</button>
+            <button on:click="{() => $page = loop_page}" class="page-link">{loop_page+1}</button>
         </li>
         {/if}
         {/each}
         <!-- 다음페이지 -->
         <li class="page-item {$page >= total_page-1 && 'disabled'}">
-            <button class="page-link" on:click="{() => get_question_list($page+1)}">다음</button>
+            <button class="page-link" on:click="{() => $page++}">다음</button>
         </li>
     </ul>
     <!-- 페이징처리 끝 -->
