@@ -55,6 +55,7 @@ class HealthInfo(Base):
     subject = Column(String, unique=True, nullable=False)
     content = Column(String, nullable=False)
     link = Column(String, unique=True, nullable=False)
+    create_date = Column(DateTime, nullable=False)
 
 # DB 테이블 추가 시
 # alembic revision --autogenerate
