@@ -46,6 +46,7 @@ class User(Base):
     password = Column(String, nullable=False)
     email = Column(String, unique=True, nullable=False)     # unique : 같은 값을 저장할 수 없다\
     alarmAccepted = Column(Boolean, default=False)
+    authority = Column(Boolean, default=False)
 
 
 # DB 테이블 추가 시

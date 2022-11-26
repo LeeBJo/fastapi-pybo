@@ -12,7 +12,7 @@ router = APIRouter(
 )
 
 
-@router.get("/list", response_model=question_schema.QuestionList)
+@router.get("/list", response_model=question_schema.QuestionList)   # 리턴타입 = Question_schema의 QuestionList
 def question_list(db: Session = Depends(get_db),
                   page: int =0, size: int = 10, keyword = ''):
     total, _question_list = question_crud.get_question_list(

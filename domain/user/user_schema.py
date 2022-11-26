@@ -7,6 +7,7 @@ class UserCreate(BaseModel):
     password2: str
     email: EmailStr
     alarmAccepted: bool
+    authority: bool
 
     @validator('username', 'password1', 'password2', 'email')
     def not_empty(cls, v):
@@ -25,7 +26,7 @@ class User(BaseModel):
     username: str
     email: str
 
-    class Config:
+    class Config:               # user 모델의 항목들이 자동으로 user schema로 매핑
         orm_mode = True
 
 
