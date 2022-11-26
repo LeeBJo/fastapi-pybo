@@ -25,8 +25,6 @@ class User(BaseModel):
     id: int
     username: str
     email: str
-    alarmAccepted: bool
-    authority: bool
 
     class Config:               # user 모델의 항목들이 자동으로 user schema로 매핑
         orm_mode = True
