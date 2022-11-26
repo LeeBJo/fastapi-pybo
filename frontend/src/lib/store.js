@@ -8,7 +8,7 @@ const persist_storage = (key, initValue) => {               // 지속성 스토�
     })
     return store
 }
-
+//유저리스트 페이지 변수 추가
 export const page = persist_storage("page", 0)  
 export const keyword = persist_storage("keyword", 0)
 export const access_token = persist_storage("access_token", "")

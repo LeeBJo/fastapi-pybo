@@ -48,6 +48,13 @@ class User(Base):
     alarmAccepted = Column(Boolean, default=False)
     authority = Column(Boolean, default=False)
 
+class HealthInfo(Base):
+    __tablename__ = "health_info"
+
+    id = Column(Integer, primary_key=True)
+    subject = Column(String, unique=True, nullable=False)
+    content = Column(String, nullable=False)
+    link = Column(String, unique=True, nullable=False)
 
 # DB 테이블 추가 시
 # alembic revision --autogenerate
