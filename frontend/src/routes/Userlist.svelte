@@ -11,20 +11,20 @@
     $: total_page = Math.ceil(total/size)   //변수앞에 $: 기호를 붙이면 해당 변수는 반응형 변수가 된다.
                                             //total 변수의 값이 API 호출로 인해 그 값이 변하면 total_page 변수의 값도 실시간으로 재계산된다
 
-    function get_question_list() {  //get_user_list
+    function get_user_list() {  //get_user_list
         let params = {
             page: $page,            //유저 페이지
             size: size,
             keyword: $keyword,
         }
-        fastapi('get', '/api/question/list', params, (json) => {        //userlist로
+        fastapi('get', '/api/user/list', params, (json) => {        //userlist로
             question_list = json.question_list
             total = json.total
             kw = $keyword
         })
     }
         // user page로
-    $:$page, $keyword, get_question_list()      //$page 또는 $keyword의 값이 변경되면 자동으로 get_question_list() 함수가 실행
+    $:$page, $keyword, get_user_list()      //$page 또는 $keyword의 값이 변경되면 자동으로 get_question_list() 함수가 실행
 </script>
 <!--질문 목록 데이터가 "question_list"라는 이름으로 전달-->
 
@@ -32,7 +32,7 @@
 <div class="container my-3">
     <div class="row my-3">
         <!-- 유저 추가로 -->
-        <div class="col-6">
+        <div class="col-6">     <!--user-create-->
             <a use:link href="/question-create"     
                 class="btn btn-primary {$is_login ? '' : 'disabled'}">관리자 생성</a>
         </div>
@@ -55,12 +55,12 @@
         </thead>
         <tbody>
         <!-- 유저 리스트 -->
-        {#each question_list as question, i}
+        {#each user_list as user, i}
         <tr class="text-center">
             <td>{total - ($page * size) - i}</td>       <!--번호-->
             <td class="text-start">
                 <!-- 유저 조회                                  유저 아이디 -->
-                <a use:link href="/detail/{question.id}">{question.subject}</a>
+                <a use:link href="/detail/{user.id}">{user.username}</a>
             </td>
         </tr>
         {/each}
