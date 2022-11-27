@@ -22,6 +22,16 @@ router = APIRouter(
     prefix="/api/user",
 )
 
+@router.get("/list", response_model=user_schema.UserList)   # 리턴타입 = user_schema의 UserList
+def user_list(db: Session = Depends(get_db),
+                  page: int =0, size: int = 10, keyword = ''):
+    total, _user_list = user_crud.get_user_list(
+        db, skip=page * size, limit=size, keyword=keyword)
+    return {
+        'total': total,
+        'user_list': _user_list
+    }
+
 
 @router.post("/create", status_code=status.HTTP_204_NO_CONTENT)
 def user_create(_user_create: user_schema.UserCreate, db: Session = Depends(get_db)):

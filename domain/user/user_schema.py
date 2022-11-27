@@ -36,7 +36,7 @@ class UserList(BaseModel):
 class UserUpdate(UserCreate):       # UserCreate class 상속
     user_id: int
 
-class QuestionDelete(BaseModel):
+class UserDelete(BaseModel):
     user_id: int
 
 
