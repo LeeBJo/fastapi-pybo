@@ -32,6 +32,10 @@ def user_list(db: Session = Depends(get_db),
         'user_list': _user_list
     }
 
+@router.get("/detail/{username}", response_model=user_schema.User)
+def question_detail(username: str, db: Session = Depends(get_db)):
+    user = user_crud.get_user(db, username=username)
+    return user
 
 @router.post("/create", status_code=status.HTTP_204_NO_CONTENT)
 def user_create(_user_create: user_schema.UserCreate, db: Session = Depends(get_db)):
