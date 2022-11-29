@@ -32,7 +32,7 @@
             }
             fastapi('delete', url, params, 
                 (json) => {
-                    push('/')
+                    push('/')       // 유저 디테일
                 },
                 (err_json) => {
                     error = err_json
