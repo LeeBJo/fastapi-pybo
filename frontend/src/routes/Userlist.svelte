@@ -18,13 +18,13 @@
             keyword: $keyword,
         }
         fastapi('get', '/api/user/list', params, (json) => {        //userlist로
-            question_list = json.question_list
+            user_list = json.user_list
             total = json.total
             kw = $keyword
         })
     }
         // user page로
-    $:$page, $keyword, get_user_list()      //$page 또는 $keyword의 값이 변경되면 자동으로 get_question_list() 함수가 실행
+    $:$page, $keyword, get_user_list()      //$page 또는 $keyword의 값이 변경되면 자동으로 get_user_list() 함수가 실행
 </script>
 <!--질문 목록 데이터가 "user_list"라는 이름으로 전달-->
 
@@ -32,8 +32,8 @@
 <div class="container my-3">
     <div class="row my-3">
         <!-- 유저 추가로 -->
-        <div class="col-6">     <!--user-create-->
-            <a use:link href="/question-create"     
+        <div class="col-6">     <!--app.svelte에 추가필요*****-->
+            <a use:link href="/user-create-mgr"     
                 class="btn btn-primary {$is_login ? '' : 'disabled'}">관리자 생성</a>
         </div>
         <!-- 유저 검색 -->
@@ -59,8 +59,8 @@
         <tr class="text-center">
             <td>{total - ($page * size) - i}</td>       <!--번호-->
             <td class="text-start">
-                <!-- 유저 조회                                  유저 아이디 -->
-                <a use:link href="/detail/{user.id}">{user.username}</a>
+                <!-- 유저 조회       유저디테일 샐 링크 필요*******    유저 아이디 -->
+                <a use:link href="/detail/{user.username}">{user.username}</a>
             </td>
         </tr>
         {/each}
