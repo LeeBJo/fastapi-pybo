@@ -54,7 +54,6 @@
             <label for="email">이메일</label>
             <input type="text" class="form-control" id="email" bind:value="{email}">
         </div>
-        
         <div class="mb-3">
             <label for="email">이메일 수신 동의 여부</label>
             <input type="checkbox"  id="alarmAccepted" bind:checked="{alarmAccepted}">

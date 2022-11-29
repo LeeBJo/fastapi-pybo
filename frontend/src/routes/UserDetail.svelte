@@ -10,7 +10,7 @@
 
     export let params = {}
     let username = params.username
-    let user = {answers:[], voter:[], content:''}   //  유저가 넘기는 특성들로 수정*****
+    let user = {username:'', email:'', authority:Boolean, alarmAccepted:Boolean}   //  유저가 넘기는 특성들로 수정
     let content = ""
     let error = {detail:[]}
 
@@ -26,7 +26,7 @@
     //유저 삭제 도메인에 함수 추가
     function delete_user(_username) {
         if(window.confirm('정말로 삭제하시겠습니까?')) {
-            let url = "/api/user/delete"                // user/delete*******
+            let url = "/api/user/delete"                
             let params = {
                 username: _username
             }
@@ -45,11 +45,14 @@
 
 <div class="container my-3">
     <!-- 유저 정보 -->
-    <h2 class="border-bottom py-2">{question.subject}</h2>      <!-- 유저정보들로 수정********-->
+    <h2 class="border-bottom py-2">{user.username}</h2>      <!-- 유저정보들로 수정-->
     <div class="card my-3">
         <div class="card-body">
-            <div class="card-text">
-                {@html marked.parse(question.content)}          <!--유저에서 넘기는 모든 정보를 표시******-->
+            <div class="card-text">       <!--유저에서 넘기는 모든 정보를 표시-->
+                {@html marked.parse(user.username)}        
+                {@html marked.parse(user.email)}         
+                {@html marked.parse(user.alarmAccepted)}          
+                {@html marked.parse(user.authority)}       
             </div>
             <div class="my-3">  <!-- 수정, 삭제-->  <!--수정 페이지 필요******** -->
                 <a use:link href="/user-modify/{user.username}"           

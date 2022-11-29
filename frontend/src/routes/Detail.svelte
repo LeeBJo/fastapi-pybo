@@ -21,7 +21,8 @@
     }
 
     get_question()
-
+    
+    //답변 달기
     function post_answer(event) {
         event.preventDefault()
         let url = "/api/answer/create/" + question_id
@@ -40,6 +41,7 @@
         )
     }
 
+    //질문 삭제
     function delete_question(_question_id) {
         if(window.confirm('정말로 삭제하시겠습니까?')) {
             let url = "/api/question/delete"
@@ -57,6 +59,7 @@
         }
     }
 
+    //댓글 삭제
     function delete_answer(answer_id) {
         if(window.confirm('정말로 삭제하시겠습니까?')) {
             let url = "/api/answer/delete"
@@ -74,6 +77,7 @@
         }
     }
 
+    //추천버튼
     function vote_question(_question_id) {
         if(window.confirm('정말로 추천하시겠습니까?')) {
             let url = "/api/question/vote"

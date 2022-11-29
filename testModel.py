@@ -47,6 +47,7 @@ class User(Base):
     email = Column(String, unique=True, nullable=False)     # unique : 같은 값을 저장할 수 없다\
     alarmAccepted = Column(Boolean, default=False)
     authority = Column(Boolean, default=False)
+    modify_date = Column(DateTime, nullable=True)  # 수정일
 
 class HealthInfo(Base):
     __tablename__ = "health_info"

@@ -34,7 +34,7 @@ class UserList(BaseModel):
     user_list: list[User] = []
 
 class UserUpdate(UserCreate):       # UserCreate class 상속
-    username: str                #username으로 교체 고려
+    username: str
 
 class UserDelete(BaseModel):
     username: str                #username으로 교체 고려

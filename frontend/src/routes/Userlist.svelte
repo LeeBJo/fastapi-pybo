@@ -26,7 +26,7 @@
         // user page로
     $:$page, $keyword, get_user_list()      //$page 또는 $keyword의 값이 변경되면 자동으로 get_question_list() 함수가 실행
 </script>
-<!--질문 목록 데이터가 "question_list"라는 이름으로 전달-->
+<!--질문 목록 데이터가 "user_list"라는 이름으로 전달-->
 
 
 <div class="container my-3">

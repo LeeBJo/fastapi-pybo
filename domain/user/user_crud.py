@@ -1,7 +1,9 @@
 from passlib.context import CryptContext
 from sqlalchemy.orm import Session
-from domain.user.user_schema import UserCreate
+from domain.user.user_schema import UserCreate, UserUpdate
 from testModel import User
+from datetime import datetime
+
 
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
@@ -31,6 +33,15 @@ def get_existing_user(db: Session, user_create: UserCreate):        # 중복 아
 def get_user(db:Session, username: str):                            # 사용자명으로 사용자 모델 객체를 리턴하는 get_user 함수
     return db.query(User).filter(User.username == username).first()
 
+def update_user(db: Session, db_user: User,
+                    user_update: UserUpdate):
+    db_user.subject = user_update.subject
+    db_user.email = user_update.email
+    db_user.alarmAccepted = user_update.alarmAccepted
+    db_user.password = pwd_context.hash(user_update.password1)      # 암호화 해서 저장
+    db_user.modify_date = datetime.now()           #마지막 수정일
+    db.add(db_user)
+    db.commit()
 
 ## delete_user함수 추가
 def delete_user(db: Session, db_user: User):

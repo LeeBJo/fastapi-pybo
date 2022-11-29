@@ -107,3 +107,19 @@ def user_delete(_user_delete: user_schema.UserDelete,
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST,
                             detail="삭제 권한이 없습니다.")
     user_crud.delete_user(db=db, db_user=db_user)
+
+#직접 작성
+@router.put("/update", status_code=status.HTTP_204_NO_CONTENT)
+def user_update(_user_update: user_schema.UserUpdate,
+                    db: Session = Depends(get_db),
+                    current_user: User = Depends(get_current_user)):
+    db_user = user_crud.get_user(db, username=_user_update.username)
+    if not db_user:
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST,
+                            detail="데이터를 찾을수 없습니다.")
+    if current_user.id != db_user.id:                                       # 관리자는 가능하도록 수정
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST,        # 본인이작성한 게시글만 수정 가능
+                            detail="수정 권한이 없습니다.")
+    # 비밀번호 일치여부 확인
+    user_crud.update_user(db=db, db_user=db_user,
+                                  user_update=_user_update)
