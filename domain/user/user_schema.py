@@ -34,10 +34,10 @@ class UserList(BaseModel):
     user_list: list[User] = []
 
 class UserUpdate(UserCreate):       # UserCreate class 상속
-    user_id: int
+    username: str                #username으로 교체 고려
 
 class UserDelete(BaseModel):
-    user_id: int
+    username: str                #username으로 교체 고려
 
 
 class Token(BaseModel):     # 로그인 출력항목

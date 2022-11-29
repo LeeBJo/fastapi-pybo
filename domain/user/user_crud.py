@@ -30,3 +30,9 @@ def get_existing_user(db: Session, user_create: UserCreate):        # 중복 아
 
 def get_user(db:Session, username: str):                            # 사용자명으로 사용자 모델 객체를 리턴하는 get_user 함수
     return db.query(User).filter(User.username == username).first()
+
+
+## delete_user함수 추가
+def delete_user(db: Session, db_user: User):
+    db.delete(db_user)
+    db.commit()
