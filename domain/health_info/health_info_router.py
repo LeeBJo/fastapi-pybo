@@ -13,7 +13,6 @@ router = APIRouter(
     prefix="/api/health_info",
 )
 
-
 @router.get("/list", response_model=health_info_schema.HealthInfoList)   # 리턴타입 = health_schema의 HealthInfoList
 def health_info_list(db: Session = Depends(get_db),
                   page: int =0, size: int = 10, keyword = ''):
@@ -23,3 +22,8 @@ def health_info_list(db: Session = Depends(get_db),
         'total': total,
         'health_info_list': _health_info_list
     }
+
+@router.post("/create", status_code=status.HTTP_204_NO_CONTENT)
+def health_info_create(_health_info_create: health_info_schema.HealthIfoCreate,
+                    db: Session = Depends(get_db)):
+    health_info_crud.create_health_info(db=db, health_info_create=_health_info_create)

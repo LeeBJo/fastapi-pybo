@@ -1,6 +1,7 @@
 from datetime import datetime
 
 from testModel import HealthInfo, User, Answer
+from domain.health_info.health_info_schema import HealthInfoCreate
 from sqlalchemy.orm import Session
 
 
@@ -17,3 +18,11 @@ def get_health_info_list(db: Session, skip: int = 0, limit: int = 10, keyword: s
     health_info_list = health_info_list.order_by(HealthInfo.create_date.desc()) \
         .offset(skip).limit(limit).all()
     return total, health_info_list             # (전체 건수, 페이징 적용된 질문 목록)
+
+def create_health_info(db: Session, health_info_create: HealthInfoCreate):
+    db_health_info = HealthInfo(subject=health_info_create.subject,
+                           content=health_info_create.content,
+                           link=health_info_create.link,
+                           create_date=datetime.now())
+    db.add(db_health_info)
+    db.commit()
