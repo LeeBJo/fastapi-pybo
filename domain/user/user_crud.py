@@ -35,10 +35,9 @@ def get_user(db:Session, username: str):                            # 사용자�
 
 def update_user(db: Session, db_user: User,
                     user_update: UserUpdate):
-    db_user.subject = user_update.subject
     db_user.email = user_update.email
     db_user.alarmAccepted = user_update.alarmAccepted
-    db_user.password = pwd_context.hash(user_update.password1)      # 암호화 해서 저장
+    #db_user.password = pwd_context.hash(user_update.password1)      # 암호화 해서 저장
     db_user.modify_date = datetime.now()           #마지막 수정일
     db.add(db_user)
     db.commit()

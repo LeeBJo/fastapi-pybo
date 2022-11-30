@@ -39,8 +39,7 @@ class UserList(BaseModel):
 
 class UserUpdate(UserCreate):       # UserCreate class 상속
     username: str
-    # pwd1:수정할 비번
-    # pwd2:기존 비번과 확인
+    # newpwd를 validator로 사용하는 방법 고려
 
 class UserDelete(BaseModel):
     username: str                #username으로 교체 고려
