@@ -27,3 +27,8 @@ def health_info_list(db: Session = Depends(get_db),
 def health_info_create(_health_info_create: health_info_schema.HealthIfoCreate,
                     db: Session = Depends(get_db)):
     health_info_crud.create_health_info(db=db, health_info_create=_health_info_create)
+
+@router.get("/detail/{health_info_id}", response_model=health_info_schema.HealthInfo)
+def health_info_detail(health_info_id: int, db: Session = Depends(get_db)):
+    health_info = health_info_crud.get_health_info(db, health_info_id=health_info_id)
+    return health_info

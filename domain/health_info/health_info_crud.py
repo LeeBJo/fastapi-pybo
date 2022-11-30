@@ -26,3 +26,7 @@ def create_health_info(db: Session, health_info_create: HealthInfoCreate):
                            create_date=datetime.now())
     db.add(db_health_info)
     db.commit()
+
+def get_health_info(db: Session, health_info_id: int):
+    health_info = db.query(HealthInfo).get(health_info_id)
+    return health_info
