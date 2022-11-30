@@ -30,3 +30,7 @@ def create_health_info(db: Session, health_info_create: HealthInfoCreate):
 def get_health_info(db: Session, health_info_id: int):
     health_info = db.query(HealthInfo).get(health_info_id)
     return health_info
+
+def delete_health_info(db: Session, db_health_info: HealthInfo):
+    db.delete(db_health_info)
+    db.commit()

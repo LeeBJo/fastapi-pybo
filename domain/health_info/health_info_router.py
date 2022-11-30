@@ -32,3 +32,12 @@ def health_info_create(_health_info_create: health_info_schema.HealthIfoCreate,
 def health_info_detail(health_info_id: int, db: Session = Depends(get_db)):
     health_info = health_info_crud.get_health_info(db, health_info_id=health_info_id)
     return health_info
+
+@router.delete("/delete", status_code=status.HTTP_204_NO_CONTENT)
+def health_info_delete(_health_info_delete: health_info_schema.HealthInfoDelete,
+                    db: Session = Depends(get_db)):
+    db_health_info = health_info_crud.get_health_info(db, health_info_id=_health_info_delete.health_info_id)
+    if not db_health_info:
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST,
+                            detail="데이터를 찾을수 없습니다.")
+    health_info_crud.delete_health_info(db=db, db_health_info=db_health_info)
