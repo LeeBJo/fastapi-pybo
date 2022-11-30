@@ -30,7 +30,7 @@
         }
         fastapi('put', url, params, 
             (json) => {
-                push('/detail/'+username)
+                push('/detail/'+username)       //링크 확인************ '/manager/user-detail/:username'
             },
             (json_error) => {
                 error = json_error

@@ -32,7 +32,7 @@
             }
             fastapi('delete', url, params, 
                 (json) => {
-                    push('/')       // 유저 디테일
+                    push('/')       // 유저 리스트********** '/manager/user-list' : 매니저 페이지 유저 리스트
                 },
                 (err_json) => {
                     error = err_json
