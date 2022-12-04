@@ -12,7 +12,7 @@
     let alarmAccepted = false
     let authority = false
 
-    function post_user(event) {
+    function post_user_mgr(event) {
         event.preventDefault()
         let url = "/api/user/create"
         let params = {
@@ -25,7 +25,7 @@
         }
         fastapi('post', url, params, 
             (json) => {
-                push('/user-login')
+                push('/user-login')     //'/manager/user-list' : 매니저 페이지 유저 리스트
             },
             (json_error) => {
                 error = json_error
@@ -62,6 +62,6 @@
             <label for="email">관리자 권한 승인</label>
             <input type="checkbox"  id="alarmAccepted" bind:checked="{authority}">
         </div> 
-        <button type="submit" class="btn btn-primary" on:click="{post_user}">생성하기</button>
+        <button type="submit" class="btn btn-primary" on:click="{post_user_mgr}">생성하기</button>
     </form>
 </div>

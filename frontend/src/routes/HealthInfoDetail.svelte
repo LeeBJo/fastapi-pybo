@@ -62,7 +62,7 @@
         </div>
     </div>
 
-    <!--링크 수정필요****** '/manager/health-info-list' : 매니저 페이지 건강 정보 리스트 -->
+    <!--링크 수정필요****** '/manager' : 매니저 홈 -->
     <button class="btn btn-secondary" on:click="{() => {
         push('/')              
     }}">목록으로</button>

@@ -20,7 +20,7 @@
                 $access_token = json.access_token
                 $username = json.username
                 $is_login = true
-                push("/")
+                push("/")                   
             },
             (json_error) => {
                 error = json_error

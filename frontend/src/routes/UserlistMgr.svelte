@@ -11,13 +11,13 @@
     $: total_page = Math.ceil(total/size)   //변수앞에 $: 기호를 붙이면 해당 변수는 반응형 변수가 된다.
                                             //total 변수의 값이 API 호출로 인해 그 값이 변하면 total_page 변수의 값도 실시간으로 재계산된다
 
-    function get_user_list() {  //get_user_list
+    function get_user_list() {  
         let params = {
             page: $page,            //유저 페이지
             size: size,
             keyword: $keyword,
         }
-        fastapi('get', '/api/user/list', params, (json) => {        //userlist로
+        fastapi('get', '/api/user/list', params, (json) => {       
             user_list = json.user_list
             total = json.total
             kw = $keyword
@@ -32,8 +32,8 @@
 <div class="container my-3">
     <div class="row my-3">
         <!-- 유저 추가로 -->
-        <div class="col-6">     <!--app.svelte에 추가필요*****-->
-            <a use:link href="/user-create-mgr"     
+        <div class="col-6">     <!--app.svelte에 추가필요********-->
+            <a use:link href="/manager/user-create"     
                 class="btn btn-primary {$is_login ? '' : 'disabled'}">관리자 생성</a>
         </div>
         <!-- 유저 검색 -->
@@ -59,7 +59,7 @@
         <tr class="text-center">
             <td>{total - ($page * size) - i}</td>       <!--번호-->
             <td class="text-start">
-                <!-- 유저 조회       유저디테일 샐 링크 필요*******    유저 아이디 -->
+                <!-- 유저 조회       유저디테일 새 링크 필요******* '/manager/user-detail/username'    유저 아이디 -->
                 <a use:link href="/detail/{user.username}">{user.username}</a>
             </td>
         </tr>

@@ -10,7 +10,7 @@
 
     export let params = {}
     let username = params.username
-    let user = {username:'', email:'', authority:Boolean, alarmAccepted:Boolean}   //  유저가 넘기는 특성들로 수정
+    let user = {username:'', email:'', authority:false, alarmAccepted:false}   //  유저가 넘기는 특성들로 수정
     let content = ""
     let error = {detail:[]}
 
@@ -54,7 +54,7 @@
                 {@html marked.parse(user.alarmAccepted)}          
                 {@html marked.parse(user.authority)}       
             </div>
-            <div class="my-3">  <!-- 수정, 삭제-->  <!--수정 페이지 필요******** -->
+            <div class="my-3">  <!-- 수정, 삭제-->  <!--수정 페이지 필요******** /manager/user-modify -->
                 <a use:link href="/user-modify/{user.username}"           
                     class="btn btn-sm btn-outline-secondary">수정</a>
                 <button class="btn btn-sm btn-outline-secondary"
@@ -64,10 +64,10 @@
     </div>
 
     
-    <!--
+    <!--'/manager/health-info-list' : 매니저 페이지 건강 정보 리스트**********-->
     <button class="btn btn-secondary" on:click="{() => {
         push('/')
     }}">목록으로</button>
-    -->
+    
 
 </div>
