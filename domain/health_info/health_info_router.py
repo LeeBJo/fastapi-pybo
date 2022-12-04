@@ -24,7 +24,7 @@ def health_info_list(db: Session = Depends(get_db),
     }
 
 @router.post("/create", status_code=status.HTTP_204_NO_CONTENT)
-def health_info_create(_health_info_create: health_info_schema.HealthIfoCreate,
+def health_info_create(_health_info_create: health_info_schema.HealthInfoCreate,
                     db: Session = Depends(get_db)):
     health_info_crud.create_health_info(db=db, health_info_create=_health_info_create)
 

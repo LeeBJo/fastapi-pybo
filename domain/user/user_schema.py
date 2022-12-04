@@ -1,5 +1,5 @@
 from pydantic import BaseModel, validator, EmailStr
-from datetime import datetime
+import datetime
 
 
 class UserCreate(BaseModel):

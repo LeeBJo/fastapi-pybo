@@ -25,7 +25,7 @@ app.add_middleware(
 app.include_router(question_router.router)
 app.include_router(answer_router.router)
 app.include_router(user_router.router)
-app.include_router(health_info_router.router)
+#app.include_router(health_info_router.router)
 app.mount("/assets", StaticFiles(directory="frontend/dist/assets"))
 
 @app.get("/")

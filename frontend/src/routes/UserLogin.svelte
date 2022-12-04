@@ -2,7 +2,7 @@
     import { push } from 'svelte-spa-router'
     import fastapi from "../lib/api"
     import Error from "../components/Error.svelte"    
-    import { access_token, username, is_login } from "../lib/store"
+    import { access_token, username, is_login, is_admin } from "../lib/store"
 
     let error = {detail:[]}
     let login_username = ""
@@ -20,6 +20,9 @@
                 $access_token = json.access_token
                 $username = json.username
                 $is_login = true
+                if (json.authority == true){
+                    $is_admin = true
+                }
                 push("/")                   
             },
             (json_error) => {

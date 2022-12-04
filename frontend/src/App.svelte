@@ -8,9 +8,17 @@
   import UserLogin from "./routes/UserLogin.svelte"
   import QuestionModify from "./routes/QuestionModify.svelte"
   import AnswerModify from "./routes/AnswerModify.svelte"
-  import RecommendHome from "./routes/RecommendHome.svelte";
-  import RecommendDetail from "./routes/RecommendDetail.svelte";
-  import RecommendQuestionCreate from "./routes/RecommendQuestionCreate.svelte";
+  
+  //import RecommendHome from "./routes/RecommendHome.svelte";
+  //import RecommendDetail from "./routes/RecommendDetail.svelte";
+  //import RecommendQuestionCreate from "./routes/RecommendQuestionCreate.svelte";
+  //import UserCreateMgr from './routes/UserCreateMgr.svelte';
+  //import UserDetailMgr from './routes/UserDetailMgr.svelte';
+  //import UserModifyMgr from './routes/UserModifyMgr.svelte';
+  //import UserlistMgr from './routes/UserlistMgr.svelte';
+  //import HealthInfoCreate from './routes/HealthInfoCreate.svelte';
+  //import HealthInfoDetail from './routes/HealthInfoDetail.svelte';
+  //import HealthInfoList from './routes/HealthInfoList.svelte';
 
   const routes = {
     '/': Home,
@@ -20,17 +28,16 @@
     '/user-login': UserLogin,
     '/question-modify/:question_id': QuestionModify,
     '/answer-modify/:answer_id': AnswerModify,
-    '/recommend-diet': RecommendHome,
-    '/recommend-diet-detail/:question_id': RecommendDetail,
-    '/recommend-diet-create': RecommendQuestionCreate
-    // '/manager' : 매니저 홈
-    // '/manager/user-list' : 매니저 페이지 유저 리스트
-    // '/manager/user-detail/:username' : 매니저 유저 정보
-    // '/manager/user-create' : 관리자 회원 생성
-    // '/manager/user-modify' : 관리자 회원 수정
-    // '/manager/health-info-list' : 매니저 페이지 건강 정보 리스트
-    // '/manager/health-info-detail/:health_info_id' : 매니저 상세 건강 정보
-    // '/manager/health-info-create' : 관리자 건강 정보 생성
+    //'/recommend-diet': RecommendHome,
+    //'/recommend-diet-detail/:question_id': RecommendDetail,
+    //'/recommend-diet-create': RecommendQuestionCreate
+    // '/user-list' : 매니저 페이지 유저 리스트
+    // '/user-detail/:username' : 매니저 유저 정보
+    // '/user-create-mgr' : 관리자 회원 생성
+    // '/user-modify-mgr' : 관리자 회원 수정
+    // '/health-info-list' : 매니저 페이지 건강 정보 리스트
+    // '/health-info-detail/:health_info_id' : 매니저 상세 건강 정보
+    // '/health-info-create' : 관리자 건강 정보 생성
 
   }
 </script>
