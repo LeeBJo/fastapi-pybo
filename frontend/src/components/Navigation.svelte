@@ -26,14 +26,15 @@
                             $access_token = ''
                             $username = ''
                             $is_login = false
+                            $is_admin = false
                         }}>로그아웃 ({$username})</a>
                     </li>
                     <li class="nav-item">
-                        <a use:link class="nav-link" href="/user-create">식단 추천</a>
+                        <a use:link class="nav-link" href="/user-create">식단 추천</a>  ###
                     </li>
                     {#if $is_admin }
                         <li class="nav-item">
-                            <a use:link class="nav-link" href="/user-create">건강정보</a> ###
+                            <a use:link class="nav-link" href="/health-info-list">건강정보</a> ###
                         </li>
                         <li class="nav-item">
                             <a use:link class="nav-link" href="/user-create">유저 조회</a> ###

@@ -20,9 +20,10 @@
                 $access_token = json.access_token
                 $username = json.username
                 $is_login = true
-                if (json.authority == true){
-                    $is_admin = true
-                }
+                $is_admin = json.authority
+                
+                
+                
                 push("/")                   
             },
             (json_error) => {

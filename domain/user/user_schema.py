@@ -49,3 +49,4 @@ class Token(BaseModel):     # 로그인 출력항목
     access_token: str
     token_type: str
     username: str
+    authority: bool

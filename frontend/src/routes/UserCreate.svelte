@@ -57,7 +57,7 @@
         <div class="mb-3">
             <label for="email">이메일 수신 동의 여부</label>
             <input type="checkbox"  id="alarmAccepted" bind:checked="{alarmAccepted}">
-        </div> 
+        </div>
         <button type="submit" class="btn btn-primary" on:click="{post_user}">생성하기</button>
     </form>
 </div>

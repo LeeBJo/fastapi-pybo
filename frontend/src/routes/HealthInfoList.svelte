@@ -34,8 +34,8 @@
 <div class="container my-3">
     <div class="row my-3">
         <!-- 건강정보 추가로 -->
-        <div class="col-6">     <!--app.svelte에 추가필요***** health-info-create-mgr-->
-            <a use:link href="/user-create-mgr"     
+        <div class="col-6">     
+            <a use:link href="/health-info-create"     
                 class="btn btn-primary {$is_login ? '' : 'disabled'}">건강정보추가</a>
         </div>
         <!-- 건강정보 검색 -->
@@ -60,8 +60,8 @@
             {#each health_info_list as health_info, i}
             <tr class="text-center">
                 <td>{total - ($page * size) - i}</td>               <!--번호-->
-                <td class="text-start">           <!-- '/manager/health-info-detail/:health_info_id'********-->
-                    <a use:link href="/detail/{health_info.id}">{health_info.subject}</a>     <!--건강정보 세부 페이지 필요*******-->
+                <td class="text-start">          
+                    <a use:link href="/health-info-detail/{health_info.id}">{health_info.subject}</a>     <!--건강정보 세부 페이지 필요*******-->
                 </td>
                 <td>{moment(health_info.create_date).format("YYYY년 MM월 DD일 hh:mm a")}</td>  <!-- 한국 날짜 형식 -->
             </tr>

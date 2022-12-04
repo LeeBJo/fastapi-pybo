@@ -66,7 +66,7 @@ class RecommendQuestion(Base):
     content = Column(Text, nullable=False)
     create_date = Column(DateTime, nullable=False)
     user_id = Column(Integer, ForeignKey("user.id"), nullable=True)
-    user = relationship("User", backref="question_users")
+    user = relationship("User", backref="recommend_users")                   ##
     modify_date = Column(DateTime, nullable=True)
 
 class RecommendAnswer(Base):
@@ -78,7 +78,8 @@ class RecommendAnswer(Base):
     question_id = Column(Integer, ForeignKey("recommend_question.id"))
     question = relationship("RecommendQuestion", backref="recommend_answers")
     user_id = Column(Integer, ForeignKey("user.id"), nullable=True)
-    user = relationship("User", backref="answer_users")
+
+    user = relationship("User", backref="recommend_answer_users")
     modify_date = Column(DateTime, nullable=True)
 
 # DB 테이블 추가 시

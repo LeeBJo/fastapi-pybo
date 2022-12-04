@@ -31,7 +31,7 @@
             }
             fastapi('delete', url, params, 
                 (json) => {
-                    push('/')           // 링크수정필요***** '/manager/health-info-list' : 매니저 페이지 건강 정보 리스트
+                    push('/health-info-list')          
                 },
                 (err_json) => {
                     error = err_json
