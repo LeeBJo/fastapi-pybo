@@ -8,6 +8,9 @@
   import UserLogin from "./routes/UserLogin.svelte"
   import QuestionModify from "./routes/QuestionModify.svelte"
   import AnswerModify from "./routes/AnswerModify.svelte"
+  import RecommendHome from "./routes/RecommendHome.svelte";
+  import RecommendDetail from "./routes/RecommendDetail.svelte";
+  import RecommendQuestionCreate from "./routes/RecommendQuestionCreate.svelte";
 
   const routes = {
     '/': Home,
@@ -17,6 +20,9 @@
     '/user-login': UserLogin,
     '/question-modify/:question_id': QuestionModify,
     '/answer-modify/:answer_id': AnswerModify,
+    '/recommend-diet': RecommendHome,
+    '/recommend-diet-detail/:question_id': RecommendDetail,
+    '/recommend-diet-create': RecommendQuestionCreate
     // '/manager' : 매니저 홈
     // '/manager/user-list' : 매니저 페이지 유저 리스트
     // '/manager/user-detail/:username' : 매니저 유저 정보
