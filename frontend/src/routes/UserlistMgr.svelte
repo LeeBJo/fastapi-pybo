@@ -2,6 +2,7 @@
     import fastapi from "../lib/api"
     import { link } from 'svelte-spa-router'
     import { page, keyword, is_login } from "../lib/store"      // page대신 유저 페이지
+    import { loop_guard } from "svelte/internal";
 
     let user_list = []
     let size = 10               //페이지당 표시 갯수
@@ -32,9 +33,9 @@
 <div class="container my-3">
     <div class="row my-3">
         <!-- 유저 추가로 -->
-        <div class="col-6">     <!--app.svelte에 추가필요********-->
-            <a use:link href="/manager/user-create"     
-                class="btn btn-primary {$is_login ? '' : 'disabled'}">관리자 생성</a>
+        <div class="col-6">     
+            <a use:link href="/user-create-mgr"     
+                class="btn btn-primary {$is_login ? '' : 'disabled'}">계정 생성</a>
         </div>
         <!-- 유저 검색 -->
         <div class="col-6">
@@ -59,8 +60,8 @@
         <tr class="text-center">
             <td>{total - ($page * size) - i}</td>       <!--번호-->
             <td class="text-start">
-                <!-- 유저 조회       유저디테일 새 링크 필요******* '/manager/user-detail/username'    유저 아이디 -->
-                <a use:link href="/detail/{user.username}">{user.username}</a>
+                <!-- 유저 조회           유저 아이디 -->
+                <a use:link href="/user-detail-mgr/{user.username}">{user.username}</a>
             </td>
         </tr>
         {/each}

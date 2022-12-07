@@ -19,6 +19,8 @@ def get_health_info_list(db: Session, skip: int = 0, limit: int = 10, keyword: s
         .offset(skip).limit(limit).all()
     return total, health_info_list             # (전체 건수, 페이징 적용된 질문 목록)
 
+
+
 def create_health_info(db: Session, health_info_create: HealthInfoCreate):
     db_health_info = HealthInfo(subject=health_info_create.subject,
                            content=health_info_create.content,

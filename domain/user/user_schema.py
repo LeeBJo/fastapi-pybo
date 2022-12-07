@@ -38,8 +38,7 @@ class UserList(BaseModel):
     user_list: list[User] = []
 
 class UserUpdate(UserCreate):       # UserCreate class 상속
-    username: str
-    # newpwd를 validator로 사용하는 방법 고려
+    newpwd: str
 
 class UserDelete(BaseModel):
     username: str                #username으로 교체 고려

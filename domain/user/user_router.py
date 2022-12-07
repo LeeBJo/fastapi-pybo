@@ -104,7 +104,7 @@ def user_delete(_user_delete: user_schema.UserDelete,
     if not db_user:
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST,
                             detail="데이터를 찾을수 없습니다.")
-    if current_user.username != db_user.uername and current_user.authority is False:                # 관리자 권한이면 가능
+    if current_user.username != db_user.username and current_user.authority is False:                # 관리자 권한이면 가능
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST,
                             detail="삭제 권한이 없습니다.")
     user_crud.delete_user(db=db, db_user=db_user)
@@ -112,24 +112,10 @@ def user_delete(_user_delete: user_schema.UserDelete,
 #직접 작성
 @router.put("/update", status_code=status.HTTP_204_NO_CONTENT)
 def user_update(_user_update: user_schema.UserUpdate,
-                    db: Session = Depends(get_db),
-                    current_user: User = Depends(get_current_user)):
+                    db: Session = Depends(get_db)):
     db_user = user_crud.get_user(db, username=_user_update.username)
     if not db_user:
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST,
                             detail="데이터를 찾을수 없습니다.")
-    if current_user.id != db_user.id and current_user.authority is False:
-        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST,        # 본인 계정만 수정 가능
-                            detail="수정 권한이 없습니다.")
-    # 비밀번호 일치여부 확인
-    '''
-    if  not pwd_context.verify(form_data.password, db_user.password):
-        # pwd_context.verify 암호화 되지 않은 비밀번호를 암호화하여 데이터베이스에 저장된 암호와 일치하는지 판단한다.
-        raise HTTPException(
-            status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="Incorrect password",
-            headers={"WWW-Authenticate": "Bearer"},
-        )
-    '''
     user_crud.update_user(db=db, db_user=db_user,
-                                  user_update=_user_update)
+                                  userupdate=_user_update)

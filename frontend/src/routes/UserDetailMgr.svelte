@@ -32,7 +32,7 @@
             }
             fastapi('delete', url, params, 
                 (json) => {
-                    push('/')       // 유저 리스트********** '/manager/user-list' : 매니저 페이지 유저 리스트
+                    push('/user-list')       
                 },
                 (err_json) => {
                     error = err_json
@@ -49,13 +49,17 @@
     <div class="card my-3">
         <div class="card-body">
             <div class="card-text">       <!--유저에서 넘기는 모든 정보를 표시-->
-                {@html marked.parse(user.username)}        
-                {@html marked.parse(user.email)}         
-                {@html marked.parse(user.alarmAccepted)}          
-                {@html marked.parse(user.authority)}       
+                
+                아이디  {@html marked.parse(user.username)}        
+                이메일  {@html marked.parse(user.email)}       
+                이메일 수신 동의 여부<br> 
+                {user.alarmAccepted ? "동의":"비동의"}<br> <br>
+                권한 <br>
+                {user.authority ? "관리자":"권한없음"} 
+     
             </div>
-            <div class="my-3">  <!-- 수정, 삭제-->  <!--수정 페이지 필요******** /manager/user-modify -->
-                <a use:link href="/user-modify/{user.username}"           
+            <div class="my-3">  <!-- 수정, 삭제-->  
+                <a use:link href="/user-modify-mgr/{user.username}"           
                     class="btn btn-sm btn-outline-secondary">수정</a>
                 <button class="btn btn-sm btn-outline-secondary"
                     on:click={() => delete_user(user.username)}>삭제</button>
@@ -64,7 +68,7 @@
     </div>
 
     
-    <!--'/manager/health-info-list' : 매니저 페이지 건강 정보 리스트**********-->
+    
     <button class="btn btn-secondary" on:click="{() => {
         push('/')
     }}">목록으로</button>

@@ -39,5 +39,5 @@ class RQuestionUpdate(RQuestionCreate):
     question_id: int
 
 
-class QuestionDelete(BaseModel):
+class RQuestionDelete(BaseModel):
     question_id: int

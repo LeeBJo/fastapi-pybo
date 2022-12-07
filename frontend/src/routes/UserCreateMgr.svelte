@@ -25,7 +25,7 @@
         }
         fastapi('post', url, params, 
             (json) => {
-                push('/user-login')     //'/manager/user-list' : 매니저 페이지 유저 리스트
+                push('/user-list')     //'/manager/user-list' : 매니저 페이지 유저 리스트
             },
             (json_error) => {
                 error = json_error
