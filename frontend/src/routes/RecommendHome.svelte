@@ -1,7 +1,7 @@
 <script>
     import fastapi from "../lib/api"
     import { link } from 'svelte-spa-router'
-    import { page, keyword, is_login, is_admin, username } from "../lib/store"
+    import { page, keyword, is_login, is_admin, username, id } from "../lib/store"
     import moment from 'moment/min/moment-with-locales'
     moment.locale('ko')
 
@@ -17,7 +17,7 @@
             size: size,
             keyword: $keyword,
             admin: $is_admin,
-            username: $username
+            id: 1
         }
         fastapi('get', '/api/rquestion/list', params, (json) => {
             question_list = json.question_list
@@ -58,7 +58,7 @@
         <tr class="text-center">
             <td>{ total - ($page * size) - i }</td>
             <td class="text-start">
-                <a use:link href="/detail/{question.id}">{question.subject}</a>
+                <a use:link href="/recommend-diet-detail/{question.id}">{question.subject}</a>
                 {#if question.answers.length > 0 }
                 <span class="text-danger small mx-2">{question.answers.length}</span>
                 {/if}

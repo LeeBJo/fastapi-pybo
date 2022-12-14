@@ -1,13 +1,13 @@
 <script>
     import {link} from 'svelte-spa-router'
-    import {page, keyword, access_token, username, is_login, is_admin} from "../lib/store"
+    import {page, keyword, access_token, username, is_login, is_admin, id} from "../lib/store"
 </script>
 
 <!-- 네비게이션바 -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
     <div class="container-fluid">
         <a use:link class="navbar-brand" href="/"
-           on:click="{() => {$keyword = '', $page = 0}}">Pybo</a>
+           on:click="{() => {$keyword = '', $page = 0}}">Home</a>
         <button
                 class="navbar-toggler"
                 type="button"
@@ -25,12 +25,16 @@
                         <a use:link href="/user-login" class="nav-link" on:click={() => {
                             $access_token = ''
                             $username = ''
+                            $id = 0
                             $is_login = false
                             $is_admin = false
                         }}>로그아웃 ({$username})</a>
                     </li>
                     <li class="nav-item">
                         <a use:link class="nav-link" href="/recommend-diet">식단 추천</a>  ###
+                    </li>
+                    <li class="nav-item">
+                        <a use:link class="nav-link" href="/user-view">마이페이지</a>
                     </li>
                     {#if $is_admin }
                         <li class="nav-item">

@@ -71,7 +71,8 @@ def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends(),
         "access_token": access_token,
         "token_type": "bearer",
         "username": user.username,
-        "authority": user.authority
+        "authority": user.authority,
+        "id": user.id
     }
 
 # 헤더 정보의 토큰값으로 사용자 정보를 조회

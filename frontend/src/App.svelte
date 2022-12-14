@@ -16,8 +16,8 @@
   import UserDetailMgr from './routes/UserDetailMgr.svelte'
   import UserModifyMgr from './routes/UserModifyMgr.svelte'     //수정필요
   import RecommendHome from "./routes/RecommendHome.svelte";
-  //import RecommendDetail from "./routes/RecommendDetail.svelte";
-  //import RecommendQuestionCreate from "./routes/RecommendQuestionCreate.svelte";
+  import RecommendDetail from "./routes/RecommendDetail.svelte";
+  import RecommendQuestionCreate from "./routes/RecommendQuestionCreate.svelte";
   //----------------------------------import UserCreateMgr from './routes/UserCreateMgr.svelte';
   //----------------------------------import UserDetailMgr from './routes/UserDetailMgr.svelte';
   //----------------------------------import UserModifyMgr from './routes/UserModifyMgr.svelte';
@@ -41,8 +41,10 @@
     '/user-create-mgr' : UserCreateMgr,
     '/user-detail-mgr/:username' : UserDetailMgr,
     '/user-modify-mgr/:username' : UserModifyMgr,
-    '/recommend-diet': RecommendHome
-    //'/recommend-diet': RecommendHome,
+    '/recommend-diet': RecommendHome,
+    '/recommend-diet-detail/:question_id': RecommendDetail,
+    '/recommend-diet-create': RecommendQuestionCreate
+  
     //'/recommend-diet-detail/:question_id': RecommendDetail,
     //'/recommend-diet-create': RecommendQuestionCreate
     // -----------------------------------------------------'/user-list' : 매니저 페이지 유저 리스트

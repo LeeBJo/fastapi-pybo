@@ -5,9 +5,9 @@ from testModel import RecommendQuestion, User, RecommendAnswer
 from sqlalchemy.orm import Session
 
 
-def get_question_list(db: Session, skip: int = 0, limit: int = 10, keyword: str = '', is_admin: bool = False, username: str = ''):
-    question_list = db.query(RecommendQuestion).filter(User.username == username).all()
-
+def get_question_list(db: Session, skip: int = 0, limit: int = 10, keyword: str = '', is_admin: bool = False, user_id: int = 0):
+    question_list = db.query(RecommendQuestion).filter(RecommendQuestion.user_id == user_id)
+    '''print(question_list)
     if is_admin:
         question_list = db.query(RecommendQuestion)
 
@@ -24,7 +24,7 @@ def get_question_list(db: Session, skip: int = 0, limit: int = 10, keyword: str 
                     sub_query.c.content.ilike(search) |  # 답변내용
                     sub_query.c.username.ilike(search)  # 답변작성자
                     )
-
+    print("!!!!!!!!!!!!!!!!!2")'''
     total = question_list.distinct().count()
     question_list = question_list.order_by(RecommendQuestion.create_date.desc()) \
         .offset(skip).limit(limit).distinct().all()

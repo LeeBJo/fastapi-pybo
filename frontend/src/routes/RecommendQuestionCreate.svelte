@@ -16,7 +16,7 @@
         }
         fastapi('post', url, params,
             (json) => {
-                push("/")
+                push("/recommend-diet")
             },
             (json_error) => {
                 error = json_error
