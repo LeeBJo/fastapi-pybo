@@ -9,6 +9,8 @@
     let size = 10
     let total = 0
     let kw = ''
+    let _admin = $is_admin
+    let _id = $id
     $: total_page = Math.ceil(total/size)
 
     function get_question_list() {
@@ -16,8 +18,8 @@
             page: $page,
             size: size,
             keyword: $keyword,
-            admin: $is_admin,
-            id: 1
+            is_admin: _admin,
+            user_id: _id
         }
         fastapi('get', '/api/rquestion/list', params, (json) => {
             question_list = json.question_list

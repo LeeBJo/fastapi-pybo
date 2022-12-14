@@ -5,12 +5,12 @@ from testModel import RecommendQuestion, User, RecommendAnswer
 from sqlalchemy.orm import Session
 
 
-def get_question_list(db: Session, skip: int = 0, limit: int = 10, keyword: str = '', is_admin: bool = False, user_id: int = 0):
+def get_question_list(db: Session, skip: int = 0, limit: int = 10, keyword: str = '', is_admin: bool = False, user_id: int = 0 ):
     question_list = db.query(RecommendQuestion).filter(RecommendQuestion.user_id == user_id)
-    '''print(question_list)
+    print(question_list)
     if is_admin:
         question_list = db.query(RecommendQuestion)
-
+    '''
     if keyword:
         search = '%%{}%%'.format(keyword)
         sub_query = db.query(RecommendAnswer.question_id, RecommendAnswer.content, User.username) \
@@ -23,12 +23,15 @@ def get_question_list(db: Session, skip: int = 0, limit: int = 10, keyword: str 
                     User.username.ilike(search) |  # 질문작성자
                     sub_query.c.content.ilike(search) |  # 답변내용
                     sub_query.c.username.ilike(search)  # 답변작성자
-                    )
-    print("!!!!!!!!!!!!!!!!!2")'''
+                    )'''
+    print("!!!!!!!!!!!!!!!!!3")
     total = question_list.distinct().count()
     question_list = question_list.order_by(RecommendQuestion.create_date.desc()) \
         .offset(skip).limit(limit).distinct().all()
+    print(question_list)    #test
+    print(total)        #test
     return total, question_list  # (전체 건수, 페이징 적용된 질문 목록)
+    # 프론트에서 정보를 못 보냄
 
 
 def get_question(db: Session, question_id: int):
