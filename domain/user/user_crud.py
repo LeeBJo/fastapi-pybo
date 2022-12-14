@@ -37,7 +37,7 @@ def update_user(db: Session, db_user: User,
                     user_update: UserUpdate):
     db_user.email = user_update.email
     db_user.alarmAccepted = user_update.alarmAccepted
-    db_user.password = pwd_context.hash(user_update.newpwd)
+    #db_user.password = pwd_context.hash(user_update.newpwd)
     db_user.modify_date = datetime.now()           #마지막 수정일
     db.add(db_user)
     db.commit()

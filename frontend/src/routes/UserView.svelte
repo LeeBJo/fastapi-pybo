@@ -2,19 +2,20 @@
     import fastapi from "../lib/api"
     import Error from "../components/Error.svelte"
     import { link, push } from 'svelte-spa-router'
-    import { is_login, username } from "../lib/store"
+    //import { is_login, username } from "../lib/store"
     import { marked } from 'marked'
     import moment from 'moment/min/moment-with-locales'
     moment.locale('ko')
 
 
     export let params = {}
+    let _username = parmas.username
     let user = {username:'', email:'', authority:false, alarmAccepted:false}   //  유저가 넘기는 특성들로 수정
     let content = ""
     let error = {detail:[]}
 
     function get_user() {  
-        fastapi("get", "/api/user/detail/" + username, {}, (json) => {   
+        fastapi("get", "/api/user/detail/" + _username, {}, (json) => {   
             user = json
         })
     }
@@ -31,7 +32,7 @@
             }
             fastapi('delete', url, params, 
                 (json) => {
-                    push('/user-list')       
+                    push('/')       
                 },
                 (err_json) => {
                     error = err_json
@@ -58,8 +59,9 @@
      
             </div>
             <div class="my-3">  <!-- 수정, 삭제-->  
+                <!--
                 <a use:link href="/user-modify-mgr/{user.username}"           
-                    class="btn btn-sm btn-outline-secondary">수정</a>
+                    class="btn btn-sm btn-outline-secondary">수정</a>-->
                 <button class="btn btn-sm btn-outline-secondary"
                     on:click={() => delete_user(user.username)}>삭제</button>
             </div>

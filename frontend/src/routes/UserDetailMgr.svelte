@@ -59,8 +59,9 @@
      
             </div>
             <div class="my-3">  <!-- 수정, 삭제-->  
+                <!--
                 <a use:link href="/user-modify-mgr/{user.username}"           
-                    class="btn btn-sm btn-outline-secondary">수정</a>
+                    class="btn btn-sm btn-outline-secondary">수정</a>-->
                 <button class="btn btn-sm btn-outline-secondary"
                     on:click={() => delete_user(user.username)}>삭제</button>
             </div>
@@ -70,7 +71,7 @@
     
     
     <button class="btn btn-secondary" on:click="{() => {
-        push('/')
+        push('/user-list')
     }}">목록으로</button>
     
 

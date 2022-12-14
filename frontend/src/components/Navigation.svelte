@@ -31,17 +31,17 @@
                         }}>로그아웃 ({$username})</a>
                     </li>
                     <li class="nav-item">
-                        <a use:link class="nav-link" href="/recommend-diet">식단 추천</a>  ###
+                        <a use:link class="nav-link" href="/recommend-diet">식단 추천</a>  #
                     </li>
                     <li class="nav-item">
-                        <a use:link class="nav-link" href="/user-view">마이페이지</a>
+                        <a use:link class="nav-link" href="/user-view">마이페이지</a>   #
                     </li>
                     {#if $is_admin }
                         <li class="nav-item">
                             <a use:link class="nav-link" href="/health-info-list">건강정보</a> 
                         </li>
                         <li class="nav-item">
-                            <a use:link class="nav-link" href="/user-list">유저 조회</a> ###
+                            <a use:link class="nav-link" href="/user-list">유저 조회</a> 
                         </li>
                     {/if}
                 {:else}

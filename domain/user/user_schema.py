@@ -37,8 +37,10 @@ class UserList(BaseModel):
     total: int = 0
     user_list: list[User] = []
 
-class UserUpdate(UserCreate):       # UserCreate class 상속
-    newpwd: str
+class UserUpdate(BaseModel):       # UserCreate class 상속
+    username: str
+    email: str
+    alarmAccepted: bool
 
 class UserDelete(BaseModel):
     username: str                #username으로 교체 고려
