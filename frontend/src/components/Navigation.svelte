@@ -31,7 +31,7 @@
                         }}>로그아웃 ({$username})</a>
                     </li>
                     <li class="nav-item">
-                        <a use:link class="nav-link" href="/recommend-diet">식단 추천</a>  #
+                        <a use:link class="nav-link" href="/recommend-diet">식단 추천</a>  
                     </li>
                     <li class="nav-item">
                         <a use:link class="nav-link" href="/user-view">마이페이지</a>   
