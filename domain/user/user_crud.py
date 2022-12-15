@@ -11,7 +11,8 @@ def create_user(db: Session, user_create: UserCreate):
     db_user = User(username=user_create.username,
                    password=pwd_context.hash(user_create.password1),
                    email=user_create.email,
-                   alarmAccepted=user_create.alarmAccepted)
+                   alarmAccepted=user_create.alarmAccepted,
+                   authority=user_create.authority)
     db.add(db_user)
     db.commit()
 

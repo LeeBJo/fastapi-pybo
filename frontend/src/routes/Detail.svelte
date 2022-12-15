@@ -139,7 +139,7 @@
     <div class="card my-3">
         <div class="card-body">
             <div class="card-text">
-                {@html marked.parse(question.content)}    
+                {@html marked.parse(answer.content)}    
             </div>
             <div class="d-flex justify-content-end">
                 {#if answer.modify_date }

@@ -19,6 +19,7 @@
   import RecommendDetail from "./routes/RecommendDetail.svelte";
   import RecommendQuestionCreate from "./routes/RecommendQuestionCreate.svelte";
   import UserView from './routes/UserView.svelte'
+  import RecommendModify from './routes/RecommendModify.svelte'
   //----------------------------------import UserCreateMgr from './routes/UserCreateMgr.svelte';
   //----------------------------------import UserDetailMgr from './routes/UserDetailMgr.svelte';
   //----------------------------------import UserModifyMgr from './routes/UserModifyMgr.svelte';
@@ -45,7 +46,8 @@
     '/recommend-diet': RecommendHome,
     '/recommend-diet-detail/:question_id': RecommendDetail,
     '/recommend-diet-create': RecommendQuestionCreate,
-    '/user-view':UserView
+    '/user-view':UserView,
+    '/recommend-diet-modify/:question_id':RecommendModify
   
     //'/recommend-diet-detail/:question_id': RecommendDetail,
     //'/recommend-diet-create': RecommendQuestionCreate

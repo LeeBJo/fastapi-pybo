@@ -60,7 +60,7 @@
         </div> 
         <div class="mb-3">
             <label for="email">관리자 권한 승인</label>
-            <input type="checkbox"  id="alarmAccepted" bind:checked="{authority}">
+            <input type="checkbox"  id="authority" bind:checked="{authority}">
         </div> 
         <button type="submit" class="btn btn-primary" on:click="{post_user_mgr}">생성하기</button>
     </form>
