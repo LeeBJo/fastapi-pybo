@@ -2,14 +2,15 @@
     import fastapi from "../lib/api"
     import Error from "../components/Error.svelte"
     import { link, push } from 'svelte-spa-router'
-    //import { is_login, username } from "../lib/store"
+    import {page, keyword, access_token, username, is_login, is_admin, id} from "../lib/store"
     import { marked } from 'marked'
     import moment from 'moment/min/moment-with-locales'
     moment.locale('ko')
 
 
-    export let params = {}
-    let _username = parmas.username
+    //export let params = {}
+    //let _username = parmas.username
+    let _username = $username
     let user = {username:'', email:'', authority:false, alarmAccepted:false}   //  유저가 넘기는 특성들로 수정
     let content = ""
     let error = {detail:[]}
@@ -32,6 +33,11 @@
             }
             fastapi('delete', url, params, 
                 (json) => {
+                    $access_token = ''
+                    $username = ''
+                    $id = 0
+                    $is_login = false
+                    $is_admin = false
                     push('/')       
                 },
                 (err_json) => {
